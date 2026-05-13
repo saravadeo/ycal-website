@@ -1,0 +1,60 @@
+---
+description: Non-negotiable principal-engineering bar — root cause, module boundaries, reuse, verification (repo-wide)
+alwaysApply: true
+---
+
+# Principal engineering standards
+
+These rules define how work is done in this codebase. Prefer asking a clarifying question over guessing when requirements or contracts are ambiguous.
+
+## 1) Root cause over patches
+
+- Fix **why** something is wrong (wrong type, stale state, bad contract, routing/base path, SEO/metadata contract), not **that** the build complained.
+- Do not ship “make it compile” hacks: blanket `eslint-disable`, `@ts-ignore`, `as any`, silent `catch {}`, or arbitrary `setTimeout`/delays unless they are part of an explicit UX or platform contract and documented.
+- If Vite/React Router quirks force a workaround, isolate it behind a small typed helper (e.g. under `src/seo/` or router setup) with a brief comment referencing the upstream behavior.
+
+## 2) Module boundaries and placement
+
+Put code **one place**, in the folder that matches its responsibility. Extend existing modules before adding parallel copies.
+
+**Shared layout for this repo**
+
+- **Bootstrap / routing shell**: `src/main.tsx`, `src/App.tsx` — provide router, basename, layouts; minimal logic.
+- **Pages**: `src/pages/` — route-level screens; compose `components/` and hooks; avoid reaching into `vite.config` internals from pages.
+- **Reusable UI**: `src/components/` — layout chrome, navigation, landing sections reusable across routes.
+- **SEO & document head**: `src/seo/` — JSON-LD, document meta helpers, basename/config used by SSR-less static hosting flows; single source for tags that must stay consistent with `npm run build` + `finish-seo` pipeline.
+- **Config**: `src/config.ts` and similar — environment-friendly constants; no duplicated magic strings scattered in pages.
+
+**Do not**: copy large JSX blobs between pages when a parameterized component under `components/` serves both.
+
+## 3) Components and reuse (mandatory checklist)
+
+Before writing new markup:
+
+1. Search `src/components/` and other pages for patterns that match the interaction or layout.
+2. Extract shared sections when duplicated or obviously reusable (heroes, footer, CTAs).
+3. Prefer composition (`children`, slots, small wrappers) over one giant page component.
+4. Styling stays within the repo’s CSS approach (see `src` imports and existing patterns). Do **not** add a competing CSS framework casually.
+
+## 4) Libraries and dependencies
+
+- Prefer React 19 APIs, react-router-dom, and Vite as already configured in `package.json`.
+- New dependencies require a clear gap vs. vanilla React/browser APIs and existing tooling.
+- Avoid overlapping routers, meta libraries, or CSS stacks.
+
+## 5) Correctness and readability
+
+- Preserve or tighten TypeScript at route boundaries (`App` routes props, loaders, hooks). Narrow unknown at HTTP/JSON boundaries.
+- Prefer early returns; keep error paths explicit (failed fetch, broken config) rather than silently rendering empty content without intent.
+- No dead routes, orphaned components left from churn, or leftover debug markup.
+
+## 6) Change discipline
+
+- Match existing import style and file layout; each diff line should map to the user request or an unavoidable prerequisite.
+- No drive-by churn in `dist/`, lockfiles, or unrelated pages.
+
+## 7) Verification (required before done)
+
+Run **or clearly describe**: `yarn lint`, `yarn build`, and smoke `yarn preview` for routing under the production basename after non-trivial changes. Do not break TypeScript (`tsc -b`) or ESLint for touched files.
+
+For Vite, React Router, and SEO specifics, apply `.cursor/rules/ycal-website-vite.mdc` when editing under `src/`.

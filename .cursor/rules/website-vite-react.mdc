@@ -1,0 +1,13 @@
+---
+description: ycal-website — Vite + React + react-router-dom conventions
+globs: "**/*.{ts,tsx,js,mjs,css,html}"
+alwaysApply: false
+---
+
+# ycal-website (Vite + React)
+
+- **Stack**: Vite 6, React 19, TypeScript, react-router-dom 7. Prefer patterns from [Vite](https://vite.dev/guide/) and [React](https://react.dev/) docs.
+- **Routing**: Use react-router-dom consistently (layouts, loaders/actions if the project adopts them). Keep route components readable; extract shared UI into components under `src/` (or existing structure).
+- **Build & quality**: Respect `tsc -b` and ESLint (`yarn lint` from repo root). Fix type and lint issues at the source; do not silence rules broadly.
+- **Assets & env**: Use Vite conventions (`import.meta.env`, public assets). No Node-only APIs in client code.
+- **Performance**: Lazy routes or code-splitting where it matches existing patterns; avoid premature optimization.

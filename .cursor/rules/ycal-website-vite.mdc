@@ -1,0 +1,47 @@
+---
+description: ycal-website — Vite + React + react-router-dom, pages, SEO, static hosting conventions
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# ycal-website (Vite · React Router)
+
+## Stack (source of truth)
+
+Vite ~6, React ~19, `react-router-dom` ~7, TypeScript. Behavior and plugin choices follow [Vite](https://vite.dev/) and [React Router](https://reactrouter.com/).
+
+## Obligatory placement under `src/`
+
+| Layer | Location | Responsibility |
+|--------|-----------|------------------|
+| Route components | `src/pages/*.tsx` | One exported page per logical URL; assemble layout + SEO + content sections |
+| App shell | `src/App.tsx` | `Routes`, wrappers, basename alignment with deployment |
+| Entry | `src/main.tsx` | `createRoot`, `BrowserRouter`/provider wiring only |
+| Layout / chrome | `src/components/` | `Layout`, navigation, reusable sections — not duplicate headers per page |
+| SEO bridge | `src/seo/` | JSON-LD, `document`/meta mutations, basename helpers consumed by routing and build pipeline |
+| Build-time constants | `src/config.ts`, `vite.config.ts`, `scripts/` | Public URLs, env expectations; keep drift between basename and GH Pages deploy path impossible by sharing helpers |
+
+Thin `App.tsx` / `pages/`: if a page accumulates fetching, document effects, **and** large JSX trees, lift **logic** into a small hook under `components/`/`hooks/`/`seo/` consistent with neighboring code.
+
+## Routing and URLs
+
+1. Prefer React Router primitives (`Routes`, `Route`, hooks) aligned with [`routerBasename` / basename](https://reactrouter.com/en/main/router-components/browser-router) conventions already in tree.
+2. New routes get a **`Route`**, a **`src/pages`** entry, nav links updated in layout, and any SEO/meta updates centralized in `seo/` helpers so `build` still produces consistent HTML artifacts.
+
+## Component reuse on the marketing site
+
+- Shared chrome (site header/footer, legal boilerplate wrappers) belongs in `src/components/`; pages pass content or shallow props only.
+- For repeated marketing blocks (“feature row”, testimonial layouts), introduce one parameterized component rather than duplicating JSX across Home/Privacy/etc.
+- When adding assets, prefer `public/` for static blobs and coherent naming; avoid inlined huge assets in TS when a static URL suffices.
+
+## SEO and builds
+
+1. Canonical tags, OG/Twitter, title/description, structured data (`jsonLd`, `documentMeta`) must live in **`src/seo/`** or be imported from there so `scripts/finish-seo.mjs` and SSR-less hosting assumptions stay coherent.
+2. Relative links and anchors must behave under the deployed base path (`BrowserRouter basename` parity). Test with `vite build` + `preview` rather than guessing.
+
+## Verification for this package
+
+Touching routes, basename, SEO, or `index.html`:
+
+- Run `yarn lint` and `yarn build`.
+- If navigation or deep links changed, confirm `yarn preview` for key paths (home, privacy, terms) under the basename.
