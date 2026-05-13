@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { GITHUB_REPO_URL } from '../config'
+import { GITHUB_REPO_URL, GOOGLE_PLAY_URL } from '../config'
 import { applyDocumentMeta } from '../seo/documentMeta'
 import { HOME_JSON_LD } from '../seo/jsonLd'
 
@@ -53,6 +53,9 @@ export function Layout() {
         <div className="footer-links">
           <Link to="/privacy">Privacy policy</Link>
           <Link to="/terms">Terms of use</Link>
+          <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">
+            Google Play
+          </a>
           {GITHUB_REPO_URL ? (
             <a href={GITHUB_REPO_URL} target="_blank" rel="noopener noreferrer">
               GitHub

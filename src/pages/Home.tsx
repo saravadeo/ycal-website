@@ -1,4 +1,4 @@
-import { CREATOR } from '../config'
+import { CREATOR, GOOGLE_PLAY_URL } from '../config'
 
 function IconFree() {
   return (
@@ -140,6 +140,16 @@ export function Home() {
             A focused mobile calendar that syncs with Yahoo over CalDAV — reminders, agenda, and month
             views without the clutter.
           </p>
+          <p className="home-store-cta">
+            <a
+              className="home-store-cta-btn"
+              href={GOOGLE_PLAY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get YCal on Google Play
+            </a>
+          </p>
         </div>
       </section>
 
@@ -249,8 +259,11 @@ export function Home() {
               experience millions of Yahoo users deserve on mobile.
             </p>
             <p>
-              Leave an <strong>honest review</strong> wherever you installed the app (App Store, Google
-              Play, etc.). Reviews and strong numbers make a serious conversation easier.
+              Leave an <strong>honest review</strong> wherever you installed the app (App Store,{' '}
+              <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">
+                Google Play
+              </a>
+              , etc.). Reviews and strong numbers make a serious conversation easier.
             </p>
           </article>
         </div>

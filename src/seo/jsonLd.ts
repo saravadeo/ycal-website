@@ -1,4 +1,4 @@
-import { SITE_ORIGIN } from '../config'
+import { GOOGLE_PLAY_URL, SITE_ORIGIN } from '../config'
 
 export const HOME_JSON_LD = {
   '@context': 'https://schema.org',
@@ -13,6 +13,7 @@ export const HOME_JSON_LD = {
     price: '0',
     priceCurrency: 'USD',
   },
+  installUrl: GOOGLE_PLAY_URL,
   ...(SITE_ORIGIN
     ? {
         url: SITE_ORIGIN,

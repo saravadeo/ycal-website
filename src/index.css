@@ -291,6 +291,38 @@ main:has(.home) {
   box-sizing: border-box;
 }
 
+.home-store-cta {
+  margin: 1.35rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.home-store-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.35rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(91, 33, 182, 0.25);
+}
+
+.home-store-cta-btn:hover {
+  background: var(--primary-light);
+  text-decoration: none;
+}
+
+.home-store-cta-btn:focus-visible {
+  outline: 2px solid var(--primary-ring);
+  outline-offset: 3px;
+}
+
 .tagline {
   color: var(--text-secondary);
   font-size: clamp(1rem, 2.2vw, 1.125rem);

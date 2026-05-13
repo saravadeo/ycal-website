@@ -14,6 +14,10 @@ export const SITE_ORIGIN =
  */
 export const GITHUB_REPO_URL = 'https://github.com/saravadeo/ycal-website'
 
+/** Public listing on Google Play (Android). */
+export const GOOGLE_PLAY_URL =
+  'https://play.google.com/store/apps/details?id=com.ycal.mobile'
+
 /**
  * Homepage “From the creator” — fill in your public details (optional but recommended).
  *
