@@ -12,7 +12,7 @@ export const SITE_ORIGIN =
  * Set this to your public GitHub repository URL so the site can link to it.
  * Leave empty to hide the GitHub link in the footer.
  */
-export const GITHUB_REPO_URL = ''
+export const GITHUB_REPO_URL = 'https://github.com/saravadeo/ycal-website'
 
 /**
  * Homepage “From the creator” — fill in your public details (optional but recommended).

@@ -5,9 +5,20 @@ import react from '@vitejs/plugin-react'
 // Relative base works on GitHub Pages (project sites and custom domains).
 // For a GitHub *project* site (username.github.io/repo/), set `base: '/repo/'` here
 // so assets and BrowserRouter paths align; then add 404.html (see `yarn deploy`).
+function normalizeBase(raw: string | undefined): string {
+  const s = raw?.trim()
+  if (!s || s === '.' || s === './') {
+    return './'
+  }
+  const withLead = s.startsWith('/') ? s : `/${s}`
+  return withLead.endsWith('/') ? withLead : `${withLead}/`
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const siteOrigin = env.VITE_SITE_ORIGIN?.replace(/\/$/, '').trim() ?? ''
+  /** GitHub project page: `/repo-name/`; omit for local dev (relative `./`). */
+  const base = normalizeBase(env.VITE_BASE)
 
   return {
     plugins: [
@@ -29,6 +40,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     ],
-    base: './',
+    base,
   }
 })
