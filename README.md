@@ -3,7 +3,6 @@
 Public marketing site for **YCal**, the mobile Yahoo Calendar (CalDAV) client. Built with **Vite 6**, **React 19**, and **React Router**.
 
 - **Production site** follows your hosting setup (historically GitHub Pages / static hosting compatible with SPA routing via `public/_redirects`).
-- **Mobile app (private source)** lives in **`https://github.com/saravadeo/ycal-app`** (clone separately).
 
 ## Develop
 
