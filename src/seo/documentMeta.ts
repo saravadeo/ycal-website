@@ -1,23 +1,9 @@
 import { SITE_ORIGIN } from '../config'
+import routeMeta from './routeMeta.json'
 
 type RouteMeta = { title: string; description: string }
 
-export const ROUTE_META: Record<string, RouteMeta> = {
-  '/': {
-    title: 'YCal — Yahoo Calendar app for iOS & Android',
-    description:
-      'Free mobile calendar for Yahoo: CalDAV sync, reminders, agenda and month views. Independent app—not affiliated with Yahoo.',
-  },
-  '/privacy': {
-    title: 'Privacy policy — YCal',
-    description:
-      'How YCal handles privacy: on-device caching, Yahoo CalDAV data, and this marketing site.',
-  },
-  '/terms': {
-    title: 'Terms of use — YCal',
-    description: 'Terms of use for YCal, the independent Yahoo Calendar client for mobile.',
-  },
-}
+export const ROUTE_META = routeMeta as Record<string, RouteMeta>
 
 function setMetaProperty(property: string, content: string) {
   let el = document.querySelector(`meta[property="${property}"]`)
