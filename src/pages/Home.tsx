@@ -64,6 +64,19 @@ function IconCalendarViews() {
   )
 }
 
+function IconStar() {
+  return (
+    <svg className="home-card-icon" width={22} height={22} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3-5.4 3 1.2-6-4.5-4.1 6.1-.7L12 3z"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 function IconShield() {
   return (
     <svg className="home-card-icon" width={20} height={20} viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -208,6 +221,19 @@ export function Home() {
             <p>
               Month grid, agenda list, and day detail — fewer hops than juggling Yahoo in the browser when
               you just need to see what&apos;s next or scan the month.
+            </p>
+          </article>
+          <article className="card home-card">
+            <div className="home-card-top">
+              <span className="home-card-icon-wrap" aria-hidden>
+                <IconStar />
+              </span>
+              <h3 className="home-card-title">Premium, if you want more</h3>
+            </div>
+            <p>
+              An optional upgrade for people who juggle more than one calendar or want extra control —
+              multiple accounts in one app, faster sync, per-event reminders, and a calendar backup
+              export.
             </p>
           </article>
         </div>

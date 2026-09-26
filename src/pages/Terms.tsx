@@ -22,11 +22,13 @@ export function Terms() {
       <p>
         YCal is distributed primarily as client software. We do not provide a hosted service that
         stores your calendar on our servers &mdash; that data and its sign-in credentials are handled
-        directly between your device and Yahoo. The only backend service we operate is a narrow
-        subscription-verification service described in our{' '}
-        <Link to="/privacy">Privacy policy</Link>, used solely to confirm and remember whether a device is
-        entitled to Premium. Operation of the App otherwise depends on your device, your network, and
-        third-party services (such as Yahoo and Google Play) operating as they do today.
+        directly between your device and Yahoo. The only backend services we operate are (a) a narrow
+        subscription-verification service used to confirm and remember whether a device is entitled to
+        Premium, and (b) a service that records your signed-in account email address(es) and basic
+        device information so we can reach you about your account or subscription, both described in our{' '}
+        <Link to="/privacy">Privacy policy</Link>. Operation of the App otherwise depends on your device,
+        your network, and third-party services (such as Yahoo and Google Play) operating as they do
+        today.
       </p>
 
       <h2>Premium subscriptions</h2>
