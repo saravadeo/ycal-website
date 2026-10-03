@@ -1,4 +1,25 @@
-import { CREATOR, GOOGLE_PLAY_URL } from '../config'
+import { CREATOR, PREMIUM_FREE_TRIAL_DAYS, playStoreUrl } from '../config'
+import { HOME_FAQ } from '../content/homeFaq'
+
+const COMPARE_ROWS: { feature: string; free: string | boolean; premium: string | boolean }[] = [
+  { feature: 'Yahoo Calendar sync', free: true, premium: true },
+  { feature: 'Month, week & agenda views', free: true, premium: true },
+  { feature: 'Event reminders', free: 'Preset times', premium: 'Any time, per event' },
+  { feature: 'Pull-to-refresh sync', free: true, premium: true },
+  { feature: 'Background sync', free: 'Every 1–12 hours', premium: 'As often as every 15 min' },
+  { feature: 'Yahoo accounts', free: '1', premium: 'Multiple, merged' },
+  { feature: 'Import .ics files', free: true, premium: true },
+  { feature: 'Export / back up to .ics', free: false, premium: true },
+  { feature: 'Custom accent color', free: false, premium: true },
+  { feature: 'No ads, no trackers', free: true, premium: true },
+]
+
+
+function CompareCell({ value }: { value: string | boolean }) {
+  if (value === true) return <span className="compare-yes" aria-label="Included">✓</span>
+  if (value === false) return <span className="compare-no" aria-label="Not included">—</span>
+  return <span>{value}</span>
+}
 
 function IconFree() {
   return (
@@ -147,22 +168,31 @@ export function Home() {
               height={112}
             />
           </div>
-          <p className="home-eyebrow">Yahoo Calendar · Mobile</p>
-          <h1 id="hero-title">Calendar for your Yahoo account</h1>
+          <p className="home-eyebrow">Yahoo Calendar · Android</p>
+          <h1 id="hero-title">Never miss a Yahoo Calendar invite again</h1>
           <p className="tagline">
-            A focused mobile calendar that syncs with Yahoo over CalDAV — reminders, agenda, and month
-            views without the clutter.
+            Your Yahoo calendar on your phone with reminders that actually go off — month, week and
+            agenda views, synced straight from Yahoo.
           </p>
           <p className="home-store-cta">
             <a
               className="home-store-cta-btn"
-              href={GOOGLE_PLAY_URL}
+              href={playStoreUrl('hero')}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Get YCal on Google Play
+              Get it free on Google Play
+            </a>
+            <a className="home-store-cta-secondary" href="#premium">
+              Compare Free &amp; Premium
             </a>
           </p>
+          <ul className="home-hero-trust" aria-label="Highlights">
+            <li>Free to use</li>
+            <li>No ads</li>
+            <li>No trackers</li>
+            <li>Data stays on your phone</li>
+          </ul>
         </div>
       </section>
 
@@ -183,8 +213,8 @@ export function Home() {
               <h3 className="home-card-title">Free</h3>
             </div>
             <p>
-              No cost, no subscription wall for core calendar features — built so anyone with a Yahoo
-              account can stay organized without paying, now and going forward.
+              Sync, views and reminders are free with no ads — built so anyone with a Yahoo account can
+              stay organized without paying. Premium is there if you want more.
             </p>
           </article>
           <article className="card home-card">
@@ -232,11 +262,67 @@ export function Home() {
             </div>
             <p>
               An optional upgrade for people who juggle more than one calendar or want extra control —
-              multiple accounts in one app, faster sync, per-event reminders, and a calendar backup
-              export.
+              multiple accounts in one app, faster sync, custom reminders, and a calendar backup
+              export. <a href="#premium">See what&apos;s included</a>.
             </p>
           </article>
         </div>
+      </section>
+
+      <section id="premium" className="home-compare" aria-labelledby="compare-title">
+        <header className="home-section-head">
+          <span className="home-kicker">Free &amp; Premium</span>
+          <h2 id="compare-title" className="home-section-title">
+            Start free. Upgrade if you need more.
+          </h2>
+          <p className="home-section-sub">
+            Everything you need for one Yahoo calendar is free. Premium is for people who run more than
+            one account or want reminders exactly their way
+            {PREMIUM_FREE_TRIAL_DAYS > 0
+              ? ` — try it free for ${PREMIUM_FREE_TRIAL_DAYS} days in the app.`
+              : '.'}
+          </p>
+        </header>
+        <div className="compare-table-wrap">
+          <table className="compare-table">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Free</th>
+                <th scope="col" className="compare-premium-col">
+                  Premium
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARE_ROWS.map((row) => (
+                <tr key={row.feature}>
+                  <th scope="row">{row.feature}</th>
+                  <td>
+                    <CompareCell value={row.free} />
+                  </td>
+                  <td className="compare-premium-col">
+                    <CompareCell value={row.premium} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="home-store-cta">
+          <a
+            className="home-store-cta-btn"
+            href={playStoreUrl('compare')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {PREMIUM_FREE_TRIAL_DAYS > 0 ? 'Install free & start your trial' : 'Install YCal free'}
+          </a>
+        </p>
+        <p className="compare-footnote">
+          Premium is a monthly or yearly subscription through Google Play. Cancel any time in Google
+          Play.
+        </p>
       </section>
 
       <section className="info-section home-info" aria-labelledby="info-heading">
@@ -286,7 +372,7 @@ export function Home() {
             </p>
             <p>
               Leave an <strong>honest review</strong> wherever you installed the app (App Store,{' '}
-              <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">
+              <a href={playStoreUrl('review_note')} target="_blank" rel="noopener noreferrer">
                 Google Play
               </a>
               , etc.). Reviews and strong numbers make a serious conversation easier.
@@ -332,6 +418,40 @@ export function Home() {
             ) : null}
           </div>
         ) : null}
+      </section>
+
+      <section className="home-faq" aria-labelledby="faq-heading">
+        <header className="home-section-head home-section-head--compact">
+          <span className="home-kicker">Questions</span>
+          <h2 id="faq-heading" className="home-section-title">
+            Frequently asked
+          </h2>
+        </header>
+        <div className="faq-list">
+          {HOME_FAQ.map((item) => (
+            <details key={item.q} className="faq-item">
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="home-final-cta" aria-labelledby="final-cta-heading">
+        <h2 id="final-cta-heading" className="home-section-title">
+          Stop missing meetings from Yahoo
+        </h2>
+        <p className="tagline">Set up takes about two minutes with a Yahoo app password.</p>
+        <p className="home-store-cta">
+          <a
+            className="home-store-cta-btn"
+            href={playStoreUrl('footer_cta')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Get it free on Google Play
+          </a>
+        </p>
       </section>
     </div>
   )

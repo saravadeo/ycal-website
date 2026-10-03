@@ -2,7 +2,7 @@ export function Privacy() {
   return (
     <article className="legal-page">
       <h1>Privacy policy</h1>
-      <p className="updated">Last updated: September 26, 2026</p>
+      <p className="updated">Last updated: October 3, 2026</p>
 
       <p>
         This policy describes how YCal approaches privacy. The YCal mobile application (the
@@ -36,10 +36,10 @@ export function Privacy() {
       <h2>Limited backend services we operate</h2>
       <p>
         Calendar data itself never touches our servers, as described above. We do operate a small
-        backend, hosted on cloud infrastructure in the United States, for two narrow, account-adjacent
-        purposes described below. Neither of these services ever receives your calendar events,
-        attendees, or Yahoo app password, and neither is sold, shared with advertisers, or used for
-        advertising identifiers.
+        backend, hosted on cloud infrastructure in the United States, for the narrow, account-adjacent
+        purposes described below. None of these services ever receives your calendar events,
+        attendees, or Yahoo app password, and none of this data is sold, shared with advertisers, or
+        used for advertising identifiers.
       </p>
       <p>
         <strong>Purchase verification.</strong> YCal offers an optional, auto-renewing Premium
@@ -61,6 +61,23 @@ export function Privacy() {
         devices. This is separate from your device&apos;s address book &mdash; YCal does not request or
         read your contacts list. These records are kept for as long as your account remains in active
         use, or until you ask us to delete them.
+      </p>
+      <p>
+        <strong>Sign-in troubleshooting.</strong> If signing in to an account fails, the App sends a
+        short diagnostic report to the same backend: the email address you entered, the kind of failure
+        (for example wrong app password, network error, or a Yahoo server error) and the message the
+        App showed you, how many attempts you have made, the random installation identifier, and the
+        same coarse device information as above. Your password is never included. We use these reports
+        to find and fix sign-in problems and, where helpful, to contact you with steps to get signed
+        in. They are deleted automatically after 90 days.
+      </p>
+      <p>
+        <strong>Premium usage diagnostics.</strong> To understand which Premium features people are
+        interested in and whether purchases work smoothly, the App records simple events about the
+        Premium screen &mdash; for example that it was opened and from which feature, which plan was
+        selected, and whether a purchase completed, was canceled, or failed (with the error message).
+        These events carry the random installation identifier and coarse device information only, no
+        email address or calendar data, and are deleted automatically after 12 months.
       </p>
 
       <h2>App permissions</h2>
@@ -93,7 +110,8 @@ export function Privacy() {
         stored on your device. To request deletion of a subscription-verification record, contact us
         with your Google Play order/receipt information so we can locate it &mdash; we have no name or
         email tied to that record otherwise. To request deletion of an account-contact sync record,
-        email us from (or naming) the sign-in address you used, and we will remove it.
+        email us from (or naming) the sign-in address you used, and we will remove it; the same applies
+        to sign-in troubleshooting reports.
       </p>
 
       <h2>Contact</h2>

@@ -1,13 +1,13 @@
 import { GOOGLE_PLAY_URL, SITE_ORIGIN } from '../config'
+import { HOME_FAQ } from '../content/homeFaq'
 
-export const HOME_JSON_LD = {
-  '@context': 'https://schema.org',
+const APP_JSON_LD = {
   '@type': 'SoftwareApplication',
   name: 'YCal',
   description:
-    'Mobile calendar for Yahoo accounts: CalDAV sync, reminders, agenda and month views. Free independent client—not affiliated with Yahoo.',
+    'Android calendar for Yahoo accounts: CalDAV sync, reminders, agenda, week and month views. Free to use with optional Premium. Independent client—not affiliated with Yahoo.',
   applicationCategory: 'UtilitiesApplication',
-  operatingSystem: 'iOS, Android',
+  operatingSystem: 'Android',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -20,4 +20,18 @@ export const HOME_JSON_LD = {
         image: `${SITE_ORIGIN}/app-icon-unified.png`,
       }
     : {}),
+}
+
+const FAQ_JSON_LD = {
+  '@type': 'FAQPage',
+  mainEntity: HOME_FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+}
+
+export const HOME_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [APP_JSON_LD, FAQ_JSON_LD],
 }

@@ -4,7 +4,7 @@ export function Terms() {
   return (
     <article className="legal-page">
       <h1>Terms of use</h1>
-      <p className="updated">Last updated: September 26, 2026</p>
+      <p className="updated">Last updated: October 3, 2026</p>
 
       <p>
         These terms (&quot;Terms&quot;) apply to your use of YCal, including documentation and this
@@ -44,10 +44,17 @@ export function Terms() {
         your subscription at any time from your Google Play account&apos;s Subscriptions page &mdash;
         canceling in the App&apos;s settings does not by itself stop billing. Refunds, if any, are
         governed by Google Play&apos;s own refund policies, not by YCal directly. Premium features (for
-        example multiple accounts, custom per-event reminders, on-demand sync, faster background sync,
-        custom accent color, and calendar export) are described in the App and may change over time; we
+        example multiple accounts, custom reminders, faster background sync, custom accent color, and
+        calendar export) are described in the App and may change over time; we
         will make reasonable efforts to keep active subscribers informed of material changes. A
         &quot;Restore purchases&quot; option is available in the App for reinstalls or new devices.
+      </p>
+      <p>
+        <strong>Free trials.</strong> From time to time a plan may include a free trial, shown in the
+        App and in Google Play before you confirm. Eligibility is decided by Google Play (typically one
+        trial per Google account). Unless you cancel before the trial ends, the subscription converts
+        to a paid subscription and you are charged the price shown at sign-up. Canceling during the
+        trial keeps Premium active until the trial ends and you are not charged.
       </p>
 
       <h2>No warranty</h2>

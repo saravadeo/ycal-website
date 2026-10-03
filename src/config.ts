@@ -19,6 +19,21 @@ export const GOOGLE_PLAY_URL =
   'https://play.google.com/store/apps/details?id=com.ycal.mobile'
 
 /**
+ * Play listing link tagged with where on the site it was clicked. Google Play Console's
+ * acquisition report attributes installs by these UTM values; nothing is tracked on this site.
+ */
+export function playStoreUrl(placement: string): string {
+  const referrer = `utm_source=ycal_website&utm_medium=${placement}&utm_campaign=site`
+  return `${GOOGLE_PLAY_URL}&referrer=${encodeURIComponent(referrer)}`
+}
+
+/**
+ * Length of the Premium free trial configured in Play Console, in days. 0 hides every trial
+ * mention on the site — only set this once the trial offer is live, or the copy is false.
+ */
+export const PREMIUM_FREE_TRIAL_DAYS = 0
+
+/**
  * Homepage “From the creator” — fill in your public details (optional but recommended).
  *
  * Example:

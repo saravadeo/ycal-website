@@ -697,3 +697,193 @@ main:has(.home) {
     align-items: flex-start;
   }
 }
+
+/* Conversion: hero extras, header CTA, Free vs Premium, FAQ, final CTA */
+.nav-cta {
+  margin-left: 0.25rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.nav-cta:hover {
+  background: var(--primary-light);
+  text-decoration: none;
+}
+
+.home-store-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.1rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 999px;
+  border: 1px solid var(--primary-ring);
+  background: var(--bg-elevated);
+}
+
+.home-store-cta-secondary:hover {
+  text-decoration: none;
+  background: var(--primary-muted);
+}
+
+.home-hero-trust {
+  list-style: none;
+  padding: 0;
+  margin: 1.1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.home-hero-trust li::before {
+  content: '✓ ';
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.home-section-sub {
+  max-width: 38rem;
+  margin: 0.6rem auto 0;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+}
+
+.home-compare {
+  margin-top: 3rem;
+  scroll-margin-top: 1.5rem;
+}
+
+.compare-table-wrap {
+  max-width: 44rem;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 0.7rem 0.9rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.compare-table tbody tr:last-child th,
+.compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.compare-table thead th {
+  background: var(--surface);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.compare-table tbody th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.compare-table td {
+  color: var(--text-secondary);
+}
+
+.compare-table .compare-premium-col {
+  background: var(--primary-muted);
+}
+
+.compare-table thead .compare-premium-col {
+  color: var(--primary);
+}
+
+.compare-yes {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.compare-no {
+  color: var(--text-muted);
+}
+
+.compare-footnote {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0.75rem 0 0;
+}
+
+.home-faq {
+  margin-top: 3rem;
+}
+
+.faq-list {
+  max-width: 44rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-elevated);
+  padding: 0.85rem 1.1rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.faq-item[open] summary {
+  color: var(--primary);
+}
+
+.faq-item p {
+  margin: 0.55rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.home-final-cta {
+  margin: 3rem 0 1rem;
+  padding: 2.2rem 1.25rem;
+  text-align: center;
+  border-radius: 18px;
+  background: var(--primary-muted);
+  border: 1px solid var(--primary-ring);
+}
+
+@media (max-width: 540px) {
+  .compare-table th,
+  .compare-table td {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 540px) {
+  /* The hero's own Play button sits right below; avoid a lone wrapped header row. */
+  .nav-cta {
+    display: none;
+  }
+}

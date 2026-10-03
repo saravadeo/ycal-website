@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { GITHUB_REPO_URL, GOOGLE_PLAY_URL } from '../config'
+import { GITHUB_REPO_URL, playStoreUrl } from '../config'
 import { applyDocumentMeta } from '../seo/documentMeta'
 import { HOME_JSON_LD } from '../seo/jsonLd'
 
@@ -44,6 +44,9 @@ export function Layout() {
           <NavLink className="nav-link" to="/terms">
             Terms
           </NavLink>
+          <a className="nav-cta" href={playStoreUrl('header')} target="_blank" rel="noopener noreferrer">
+            Get the app
+          </a>
         </nav>
       </header>
       <main>
@@ -53,7 +56,7 @@ export function Layout() {
         <div className="footer-links">
           <Link to="/privacy">Privacy policy</Link>
           <Link to="/terms">Terms of use</Link>
-          <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">
+          <a href={playStoreUrl('footer')} target="_blank" rel="noopener noreferrer">
             Google Play
           </a>
           {GITHUB_REPO_URL ? (
@@ -62,7 +65,7 @@ export function Layout() {
             </a>
           ) : null}
         </div>
-        <p>YCal is an independent, free app. Not affiliated with Yahoo.</p>
+        <p>YCal is an independent app, free to use with optional Premium. Not affiliated with Yahoo.</p>
       </footer>
     </div>
   )
