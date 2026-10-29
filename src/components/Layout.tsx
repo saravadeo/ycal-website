@@ -65,7 +65,7 @@ export function Layout() {
             </a>
           ) : null}
         </div>
-        <p>YCal is an independent app, free to use with optional Premium. Not affiliated with Yahoo.</p>
+        <p>YCal is an independent, paid app sold through Google Play. Not affiliated with Yahoo.</p>
       </footer>
     </div>
   )

@@ -1,17 +1,20 @@
 import { CREATOR, PREMIUM_FREE_TRIAL_DAYS, playStoreUrl } from '../config'
 import { HOME_FAQ } from '../content/homeFaq'
 
-const COMPARE_ROWS: { feature: string; free: string | boolean; premium: string | boolean }[] = [
-  { feature: 'Yahoo Calendar sync', free: true, premium: true },
-  { feature: 'Month, week & agenda views', free: true, premium: true },
-  { feature: 'Event reminders', free: 'Preset times', premium: 'Any time, per event' },
-  { feature: 'Pull-to-refresh sync', free: true, premium: true },
-  { feature: 'Background sync', free: 'Every 1–12 hours', premium: 'As often as every 15 min' },
-  { feature: 'Yahoo accounts', free: '1', premium: 'Multiple, merged' },
-  { feature: 'Import .ics files', free: true, premium: true },
-  { feature: 'Export / back up to .ics', free: false, premium: true },
-  { feature: 'Custom accent color', free: false, premium: true },
-  { feature: 'No ads, no trackers', free: true, premium: true },
+const TRIAL_LABEL = PREMIUM_FREE_TRIAL_DAYS > 0 ? `${PREMIUM_FREE_TRIAL_DAYS}-day free trial` : null
+
+/** Every plan unlocks the same app; plans differ only in how you pay. */
+const PLAN_ROWS: { feature: string; yearly: string | boolean; monthly: string | boolean; lifetime: string | boolean }[] = [
+  { feature: 'Billing', yearly: 'Every year', monthly: 'Every month', lifetime: 'Pay once' },
+  { feature: 'Free trial', yearly: TRIAL_LABEL ?? false, monthly: false, lifetime: false },
+  { feature: 'Yahoo sync', yearly: true, monthly: true, lifetime: true },
+  { feature: 'Month, week & agenda', yearly: true, monthly: true, lifetime: true },
+  { feature: 'Custom reminders', yearly: true, monthly: true, lifetime: true },
+  { feature: 'Sync every 15 min', yearly: true, monthly: true, lifetime: true },
+  { feature: 'Multiple accounts', yearly: true, monthly: true, lifetime: true },
+  { feature: '.ics import & export', yearly: true, monthly: true, lifetime: true },
+  { feature: 'Accent colors', yearly: true, monthly: true, lifetime: true },
+  { feature: 'No ads or trackers', yearly: true, monthly: true, lifetime: true },
 ]
 
 
@@ -19,19 +22,6 @@ function CompareCell({ value }: { value: string | boolean }) {
   if (value === true) return <span className="compare-yes" aria-label="Included">✓</span>
   if (value === false) return <span className="compare-no" aria-label="Not included">—</span>
   return <span>{value}</span>
-}
-
-function IconFree() {
-  return (
-    <svg className="home-card-icon" width={22} height={22} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
 }
 
 function IconSync() {
@@ -181,14 +171,15 @@ export function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Get it free on Google Play
+              {TRIAL_LABEL ? `Start your ${TRIAL_LABEL}` : 'Get it on Google Play'}
             </a>
             <a className="home-store-cta-secondary" href="#premium">
-              Compare Free &amp; Premium
+              See plans
             </a>
           </p>
           <ul className="home-hero-trust" aria-label="Highlights">
-            <li>Free to use</li>
+            {TRIAL_LABEL ? <li>{TRIAL_LABEL}</li> : null}
+            <li>Or pay once</li>
             <li>No ads</li>
             <li>No trackers</li>
             <li>Data stays on your phone</li>
@@ -208,13 +199,13 @@ export function Home() {
           <article className="card home-card">
             <div className="home-card-top">
               <span className="home-card-icon-wrap" aria-hidden>
-                <IconFree />
+                <IconShield />
               </span>
-              <h3 className="home-card-title">Free</h3>
+              <h3 className="home-card-title">Private, no ads</h3>
             </div>
             <p>
-              Sync, views and reminders are free with no ads — built so anyone with a Yahoo account can
-              stay organized without paying. Premium is there if you want more.
+              No ads and no trackers. Your events and app password stay on your phone — YCal syncs
+              straight with Yahoo, never through our servers.
             </p>
           </article>
           <article className="card home-card">
@@ -258,12 +249,11 @@ export function Home() {
               <span className="home-card-icon-wrap" aria-hidden>
                 <IconStar />
               </span>
-              <h3 className="home-card-title">Premium, if you want more</h3>
+              <h3 className="home-card-title">Everything included</h3>
             </div>
             <p>
-              An optional upgrade for people who juggle more than one calendar or want extra control —
-              multiple accounts in one app, faster sync, custom reminders, and a calendar backup
-              export. <a href="#premium">See what&apos;s included</a>.
+              Every plan unlocks the whole app — multiple accounts in one place, faster sync, custom
+              reminders, and a calendar backup export. <a href="#premium">See plans</a>.
             </p>
           </article>
         </div>
@@ -271,16 +261,14 @@ export function Home() {
 
       <section id="premium" className="home-compare" aria-labelledby="compare-title">
         <header className="home-section-head">
-          <span className="home-kicker">Free &amp; Premium</span>
+          <span className="home-kicker">Plans</span>
           <h2 id="compare-title" className="home-section-title">
-            Start free. Upgrade if you need more.
+            One app, three ways to pay
           </h2>
           <p className="home-section-sub">
-            Everything you need for one Yahoo calendar is free. Premium is for people who run more than
-            one account or want reminders exactly their way
-            {PREMIUM_FREE_TRIAL_DAYS > 0
-              ? ` — try it free for ${PREMIUM_FREE_TRIAL_DAYS} days in the app.`
-              : '.'}
+            Install YCal, sign in with your Yahoo app password, then pick a plan. Every plan includes
+            everything
+            {TRIAL_LABEL ? ` — start with a ${TRIAL_LABEL} on Yearly.` : '.'}
           </p>
         </header>
         <div className="compare-table-wrap">
@@ -288,21 +276,25 @@ export function Home() {
             <thead>
               <tr>
                 <th scope="col">Feature</th>
-                <th scope="col">Free</th>
                 <th scope="col" className="compare-premium-col">
-                  Premium
+                  Yearly
                 </th>
+                <th scope="col">Monthly</th>
+                <th scope="col">Lifetime</th>
               </tr>
             </thead>
             <tbody>
-              {COMPARE_ROWS.map((row) => (
+              {PLAN_ROWS.map((row) => (
                 <tr key={row.feature}>
                   <th scope="row">{row.feature}</th>
-                  <td>
-                    <CompareCell value={row.free} />
-                  </td>
                   <td className="compare-premium-col">
-                    <CompareCell value={row.premium} />
+                    <CompareCell value={row.yearly} />
+                  </td>
+                  <td>
+                    <CompareCell value={row.monthly} />
+                  </td>
+                  <td>
+                    <CompareCell value={row.lifetime} />
                   </td>
                 </tr>
               ))}
@@ -316,12 +308,13 @@ export function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {PREMIUM_FREE_TRIAL_DAYS > 0 ? 'Install free & start your trial' : 'Install YCal free'}
+            {TRIAL_LABEL ? `Install & start your ${TRIAL_LABEL}` : 'Install YCal'}
           </a>
         </p>
         <p className="compare-footnote">
-          Premium is a monthly or yearly subscription through Google Play. Cancel any time in Google
-          Play.
+          Yearly and Monthly renew automatically through Google Play; cancel any time in Google Play.
+          Lifetime is a one-time purchase. Prices are shown in Google Play for your country. Already
+          using YCal for free? You keep the free features you had.
         </p>
       </section>
 
@@ -449,7 +442,7 @@ export function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Get it free on Google Play
+            {TRIAL_LABEL ? `Start your ${TRIAL_LABEL}` : 'Get it on Google Play'}
           </a>
         </p>
       </section>

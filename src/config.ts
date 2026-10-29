@@ -28,10 +28,11 @@ export function playStoreUrl(placement: string): string {
 }
 
 /**
- * Length of the Premium free trial configured in Play Console, in days. 0 hides every trial
- * mention on the site — only set this once the trial offer is live, or the copy is false.
+ * Length of the free trial on the Yearly plan in Play Console (offer free-trial-ycal-yearly), in
+ * days. Monthly and Lifetime have none. 0 hides every trial mention on the site — keep it in step
+ * with Play, or the copy is false.
  */
-export const PREMIUM_FREE_TRIAL_DAYS = 0
+export const PREMIUM_FREE_TRIAL_DAYS = 3
 
 /**
  * Homepage “From the creator” — fill in your public details (optional but recommended).

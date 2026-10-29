@@ -5,12 +5,14 @@ const APP_JSON_LD = {
   '@type': 'SoftwareApplication',
   name: 'YCal',
   description:
-    'Android calendar for Yahoo accounts: CalDAV sync, reminders, agenda, week and month views. Free to use with optional Premium. Independent client—not affiliated with Yahoo.',
+    'Android calendar for Yahoo accounts: CalDAV sync, reminders, agenda, week and month views. Yearly, monthly or one-time Lifetime plans through Google Play. Independent client—not affiliated with Yahoo.',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Android',
+  // Subscription prices vary by country; Lifetime is the one fixed USD price.
   offers: {
     '@type': 'Offer',
-    price: '0',
+    name: 'YCal Lifetime',
+    price: '19.99',
     priceCurrency: 'USD',
   },
   installUrl: GOOGLE_PLAY_URL,

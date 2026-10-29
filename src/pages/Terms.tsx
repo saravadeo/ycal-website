@@ -4,7 +4,7 @@ export function Terms() {
   return (
     <article className="legal-page">
       <h1>Terms of use</h1>
-      <p className="updated">Last updated: October 3, 2026</p>
+      <p className="updated">Last updated: October 29, 2026</p>
 
       <p>
         These terms (&quot;Terms&quot;) apply to your use of YCal, including documentation and this
@@ -31,16 +31,21 @@ export function Terms() {
         today.
       </p>
 
-      <h2>Premium subscriptions</h2>
+      <h2>Plans and Premium</h2>
       <p>
-        YCal offers an optional, paid Premium upgrade sold as an auto-renewing monthly or yearly
-        subscription through Google Play Billing. By purchasing Premium you agree that:
+        YCal is a paid app. After you sign in, using the App requires Premium, sold through Google Play
+        Billing as an auto-renewing monthly or yearly subscription or as a one-time Lifetime purchase.
+        If you were already signed in to the App before it required Premium, you keep the features
+        that were free at that time on that installation; reinstalling the App or using it on another
+        device requires a plan. By purchasing Premium you agree that:
       </p>
       <p>
         Pricing is shown in the App and in Google Play at the time of purchase and is charged to your
         Google Play account. Subscriptions renew automatically for the same term and price (or the then
         current price, if changed with notice as required by Google Play policy) unless canceled at
-        least 24 hours before the end of the current billing period. You can view, manage, or cancel
+        least 24 hours before the end of the current billing period. A Lifetime purchase is a single
+        payment that does not renew and unlocks Premium for as long as YCal and its
+        subscription-verification service are offered. You can view, manage, or cancel
         your subscription at any time from your Google Play account&apos;s Subscriptions page &mdash;
         canceling in the App&apos;s settings does not by itself stop billing. Refunds, if any, are
         governed by Google Play&apos;s own refund policies, not by YCal directly. Premium features (for
@@ -78,8 +83,8 @@ export function Terms() {
 
       <h2>Software and use</h2>
       <p>
-        YCal&apos;s core features are offered free of charge, with an optional paid Premium upgrade as
-        described above. Your use of the App is also subject to any end-user terms presented in the app
+        Use of the App requires Premium as described above, except for installations that keep their
+        earlier free features. Your use of the App is also subject to any end-user terms presented in the app
         store or at install time, if applicable. This website is provided for informational purposes
         only and does not create a separate cloud service agreement.
       </p>
