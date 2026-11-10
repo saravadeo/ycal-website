@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { GITHUB_REPO_URL, playStoreUrl } from '../config'
+import { APP_STORE_URL, GITHUB_REPO_URL, playStoreUrl } from '../config'
 import { applyDocumentMeta } from '../seo/documentMeta'
 import { HOME_JSON_LD } from '../seo/jsonLd'
 
@@ -59,13 +59,24 @@ export function Layout() {
           <a href={playStoreUrl('footer')} target="_blank" rel="noopener noreferrer">
             Google Play
           </a>
+          <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+            App Store
+          </a>
           {GITHUB_REPO_URL ? (
             <a href={GITHUB_REPO_URL} target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
           ) : null}
         </div>
-        <p>YCal is an independent, paid app sold through Google Play. Not affiliated with Yahoo.</p>
+        <p>
+          YCal is an independent app. It is not made by, affiliated with, endorsed by, or sponsored by
+          Yahoo Inc., Apple Inc., or Google LLC.
+        </p>
+        <p className="footer-trademarks">
+          Yahoo is a trademark of Yahoo Inc. or its affiliates. Apple, iPhone, iPad, and App Store are
+          trademarks of Apple Inc. Google Play and Android are trademarks of Google LLC. These names are
+          used only to describe compatibility.
+        </p>
       </footer>
     </div>
   )

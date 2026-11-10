@@ -887,3 +887,11 @@ main:has(.home) {
     display: none;
   }
 }
+
+.site-footer .footer-trademarks {
+  font-size: 0.75rem;
+  opacity: 0.75;
+  max-width: 46rem;
+  margin-left: auto;
+  margin-right: auto;
+}

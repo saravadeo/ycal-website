@@ -1,4 +1,4 @@
-import { CREATOR, PREMIUM_FREE_TRIAL_DAYS, playStoreUrl } from '../config'
+import { APP_STORE_URL, CREATOR, PREMIUM_FREE_TRIAL_DAYS, playStoreUrl } from '../config'
 import { HOME_FAQ } from '../content/homeFaq'
 
 const TRIAL_LABEL = PREMIUM_FREE_TRIAL_DAYS > 0 ? `${PREMIUM_FREE_TRIAL_DAYS}-day free trial` : null
@@ -7,7 +7,7 @@ const TRIAL_LABEL = PREMIUM_FREE_TRIAL_DAYS > 0 ? `${PREMIUM_FREE_TRIAL_DAYS}-da
 const PLAN_ROWS: { feature: string; yearly: string | boolean; monthly: string | boolean; lifetime: string | boolean }[] = [
   { feature: 'Billing', yearly: 'Every year', monthly: 'Every month', lifetime: 'Pay once' },
   { feature: 'Free trial', yearly: TRIAL_LABEL ?? false, monthly: false, lifetime: false },
-  { feature: 'Yahoo sync', yearly: true, monthly: true, lifetime: true },
+  { feature: 'Calendar sync (CalDAV)', yearly: true, monthly: true, lifetime: true },
   { feature: 'Month, week & agenda', yearly: true, monthly: true, lifetime: true },
   { feature: 'Custom reminders', yearly: true, monthly: true, lifetime: true },
   { feature: 'Sync every 15 min', yearly: true, monthly: true, lifetime: true },
@@ -158,11 +158,11 @@ export function Home() {
               height={112}
             />
           </div>
-          <p className="home-eyebrow">Yahoo Calendar · Android</p>
-          <h1 id="hero-title">Never miss a Yahoo Calendar invite again</h1>
+          <p className="home-eyebrow">Calendar &amp; reminders · Android &amp; iPhone</p>
+          <h1 id="hero-title">Never miss a meeting invite again</h1>
           <p className="tagline">
-            Your Yahoo calendar on your phone with reminders that actually go off — month, week and
-            agenda views, synced straight from Yahoo.
+            Your calendar on your phone with reminders that actually go off — month, week and agenda
+            views. Works with your existing Yahoo account over CalDAV.
           </p>
           <p className="home-store-cta">
             <a
@@ -172,6 +172,9 @@ export function Home() {
               rel="noopener noreferrer"
             >
               {TRIAL_LABEL ? `Start your ${TRIAL_LABEL}` : 'Get it on Google Play'}
+            </a>
+            <a className="home-store-cta-secondary" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+              iPhone &amp; iPad
             </a>
             <a className="home-store-cta-secondary" href="#premium">
               See plans
@@ -205,7 +208,7 @@ export function Home() {
             </div>
             <p>
               No ads and no trackers. Your events and app password stay on your phone — YCal syncs
-              straight with Yahoo, never through our servers.
+              straight with your calendar provider, never through our servers.
             </p>
           </article>
           <article className="card home-card">
@@ -213,11 +216,11 @@ export function Home() {
               <span className="home-card-icon-wrap" aria-hidden>
                 <IconSync />
               </span>
-              <h3 className="home-card-title">Yahoo sync</h3>
+              <h3 className="home-card-title">Calendar sync</h3>
             </div>
             <p>
-              Your Yahoo calendars and events on your phone — synced over CalDAV, with pull-to-refresh and
-              the option to choose which calendars to show so it matches what you use on the web.
+              The calendars and events from your Yahoo account on your phone — synced over standard
+              CalDAV, with pull-to-refresh and the option to choose which calendars to show.
             </p>
           </article>
           <article className="card home-card">
@@ -240,8 +243,8 @@ export function Home() {
               <h3 className="home-card-title">Agenda &amp; views</h3>
             </div>
             <p>
-              Month grid, agenda list, and day detail — fewer hops than juggling Yahoo in the browser when
-              you just need to see what&apos;s next or scan the month.
+              Month grid, agenda list, and day detail — fewer hops than juggling a browser tab when you
+              just need to see what&apos;s next or scan the month.
             </p>
           </article>
           <article className="card home-card">
@@ -266,7 +269,7 @@ export function Home() {
             One app, three ways to pay
           </h2>
           <p className="home-section-sub">
-            Install YCal, sign in with your Yahoo app password, then pick a plan. Every plan includes
+            Install YCal, sign in with an app password from your Yahoo account, then pick a plan. Every plan includes
             everything
             {TRIAL_LABEL ? ` — start with a ${TRIAL_LABEL} on Yearly.` : '.'}
           </p>
@@ -312,9 +315,9 @@ export function Home() {
           </a>
         </p>
         <p className="compare-footnote">
-          Yearly and Monthly renew automatically through Google Play; cancel any time in Google Play.
-          Lifetime is a one-time purchase. Prices are shown in Google Play for your country. Already
-          using YCal for free? You keep the free features you had.
+          Yearly and Monthly renew automatically through Google Play or the App Store; cancel any time
+          in your store account. Lifetime is a one-time purchase. Prices are shown in the store for your
+          country. Already using YCal for free on Android? You keep the free features you had.
         </p>
       </section>
 
@@ -332,13 +335,13 @@ export function Home() {
               <span className="info-block-icon" aria-hidden>
                 <IconShield />
               </span>
-              <h3 className="info-block-title">Yahoo app password</h3>
+              <h3 className="info-block-title">Sign in with an app password</h3>
             </div>
             <p>
-              YCal connects over CalDAV using a <strong>Yahoo app password</strong> — not your normal email
-              password. Create it once in Yahoo account settings and enter it in YCal.{' '}
-              <strong>Only people who can use Yahoo app passwords can sign in</strong> this way; it is the
-              supported path for third‑party calendar clients.
+              YCal connects over CalDAV using an <strong>app password</strong> — not your normal email
+              password. Create one in your Yahoo account&apos;s security settings and enter it in YCal.
+              You can revoke it there at any time. If your account can&apos;t create app passwords, YCal
+              can&apos;t sign in.
             </p>
             <a
               className="home-text-link"
@@ -346,7 +349,7 @@ export function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Yahoo: app passwords
+              How to create an app password (Yahoo Help)
               <IconExternal />
             </a>
           </article>
@@ -356,19 +359,22 @@ export function Home() {
               <span className="info-block-icon" aria-hidden>
                 <IconRocket />
               </span>
-              <h3 className="info-block-title">Help us show Yahoo there&apos;s demand</h3>
+              <h3 className="info-block-title">Independent and small</h3>
             </div>
             <p>
-              Right now YCal is independent. If enough people find it useful, our plan is to reach out to
-              Yahoo and work toward a <strong>real, supported product</strong> together — the calendar
-              experience millions of Yahoo users deserve on mobile.
+              YCal is built and supported by one independent developer. It is not made by, affiliated
+              with, or endorsed by Yahoo, Apple, or Google.
             </p>
             <p>
-              Leave an <strong>honest review</strong> wherever you installed the app (App Store,{' '}
+              If YCal helps you, an <strong>honest review</strong> in the{' '}
+              <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+                App Store
+              </a>{' '}
+              or on{' '}
               <a href={playStoreUrl('review_note')} target="_blank" rel="noopener noreferrer">
                 Google Play
-              </a>
-              , etc.). Reviews and strong numbers make a serious conversation easier.
+              </a>{' '}
+              helps other people find it.
             </p>
           </article>
         </div>
@@ -383,7 +389,7 @@ export function Home() {
         </header>
         <div className="creator-story">
           <p>
-            I&apos;ve been a Yahoo user for a very long time — it&apos;s my primary email. So many times
+            I&apos;ve used a Yahoo email account for a very long time — it&apos;s my primary email. So many times
             when I got a meeting invite, I still missed it: no reliable reminder, no proper notification,
             or the calendar experience on my phone simply wasn&apos;t enough to keep me on time.
           </p>
@@ -432,9 +438,9 @@ export function Home() {
 
       <section className="home-final-cta" aria-labelledby="final-cta-heading">
         <h2 id="final-cta-heading" className="home-section-title">
-          Stop missing meetings from Yahoo
+          Stop missing meetings
         </h2>
-        <p className="tagline">Set up takes about two minutes with a Yahoo app password.</p>
+        <p className="tagline">Setup takes about two minutes with an app password from your Yahoo account.</p>
         <p className="home-store-cta">
           <a
             className="home-store-cta-btn"
@@ -443,6 +449,9 @@ export function Home() {
             rel="noopener noreferrer"
           >
             {TRIAL_LABEL ? `Start your ${TRIAL_LABEL}` : 'Get it on Google Play'}
+          </a>
+          <a className="home-store-cta-secondary" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+            Get it on the App Store
           </a>
         </p>
       </section>

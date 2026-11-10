@@ -18,6 +18,9 @@ export const GITHUB_REPO_URL = 'https://github.com/saravadeo/ycal-website'
 export const GOOGLE_PLAY_URL =
   'https://play.google.com/store/apps/details?id=com.ycal.mobile'
 
+/** Public listing on Apple's App Store (iPhone and iPad). */
+export const APP_STORE_URL = 'https://apps.apple.com/app/id6822572394'
+
 /**
  * Play listing link tagged with where on the site it was clicked. Google Play Console's
  * acquisition report attributes installs by these UTM values; nothing is tracked on this site.

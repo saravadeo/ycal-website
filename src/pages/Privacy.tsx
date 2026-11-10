@@ -1,76 +1,86 @@
+import { Link } from 'react-router-dom'
+
 export function Privacy() {
   return (
     <article className="legal-page">
       <h1>Privacy policy</h1>
-      <p className="updated">Last updated: October 29, 2026</p>
+      <p className="updated">Last updated: November 10, 2026</p>
 
       <p>
-        This policy describes how YCal approaches privacy. The YCal mobile application (the
-        &quot;App&quot;) is an independent, paid client for Yahoo Calendar over standard CalDAV
-        protocols, sold as YCal Premium. It is not affiliated with, endorsed by, or
-        officially supported by Yahoo, Verizon Media, or Google.
+        This policy describes how YCal handles your information. The YCal mobile application (the
+        &quot;App&quot;) is an independent, paid calendar client that connects to calendar accounts you
+        already have, such as a Yahoo account, over the standard CalDAV protocol. It is sold as YCal
+        Premium on Google Play and Apple&apos;s App Store.
+      </p>
+      <p>
+        YCal is not made by, affiliated with, endorsed by, or supported by Yahoo Inc. or its affiliates,
+        Apple Inc., or Google LLC. Yahoo is a trademark of Yahoo Inc. or its affiliates; we use the name
+        only to say which accounts YCal works with. See our <Link to="/terms">Terms of use</Link> for
+        more.
       </p>
 
       <h2>Your calendar data never touches our servers</h2>
       <p>
-        YCal does not run a backend that receives, stores, or has access to your Yahoo account
-        credentials, calendars, or events. There is no YCal cloud database for your calendar data and
-        no YCal user account system. Calendar sync and sign-in traffic go directly between your device
-        and Yahoo&apos;s services (or other CalDAV services you configure, if applicable) &mdash; never
-        through a YCal-operated intermediary. Yahoo hosts your account and calendar data and sets the
-        rules for that processing; review Yahoo&apos;s own privacy policy and terms when you use their
-        services.
+        YCal does not run a backend that receives, stores, or has access to your calendar account
+        credentials, calendars, or events. There is no YCal cloud database for your calendar data and no
+        YCal user account system. Calendar sync and sign-in traffic go directly between your device and
+        your calendar provider (for example Yahoo&apos;s CalDAV service) &mdash; never through a
+        YCal-operated intermediary. Your provider hosts your account and calendar data and sets the rules
+        for that processing, independently of us; review that provider&apos;s own privacy policy and
+        terms.
       </p>
 
       <h2>What stays on your device</h2>
       <p>
-        To work offline and avoid signing in every launch, the App stores your Yahoo sign-in details
-        (email and app password) in the device&apos;s secure, encrypted credential storage, and keeps a
-        local cache of your synced calendars, events, and attendee addresses in a local database on the
-        device. Reminders are scheduled as local notifications on your device; no reminder or event data
-        is sent to a push-notification server to make that happen. This data remains on your phone or
-        tablet unless you remove the App, remove an account, or use the in-app sign-out and
-        data-clearing options.
+        To work offline and avoid signing in every launch, the App stores your calendar sign-in details
+        (email and app password) in the device&apos;s secure, encrypted credential storage (Android
+        Keystore-backed storage or the iOS Keychain), and keeps a local cache of your synced calendars,
+        events, and attendee addresses in a local database on the device. Reminders are scheduled as
+        local notifications on your device; no reminder or event data is sent to a push-notification
+        server to make that happen. This data remains on your phone or tablet unless you remove the App,
+        remove an account, or use the in-app sign-out and data-clearing options.
       </p>
 
       <h2>Limited backend services we operate</h2>
       <p>
         Calendar data itself never touches our servers, as described above. We do operate a small
         backend, hosted on cloud infrastructure in the United States, for the narrow, account-adjacent
-        purposes described below. None of these services ever receives your calendar events,
-        attendees, or Yahoo app password, and none of this data is sold, shared with advertisers, or
-        used for advertising identifiers.
+        purposes described below. None of these services ever receives your calendar events, attendees,
+        or app password, and none of this data is sold, shared with advertisers, or used for advertising
+        identifiers.
       </p>
       <p>
         <strong>Purchase verification.</strong> YCal Premium is sold as an auto-renewing subscription
-        (monthly or yearly) or a one-time Lifetime purchase, billed and processed entirely by Google
-        Play Billing. We never
-        see or store your payment card, bank, or billing address details &mdash; Google handles that as
-        the payment processor. To confirm and remember that a purchase is genuine and still active (for
+        (monthly or yearly) or a one-time Lifetime purchase, billed and processed entirely by Google Play
+        Billing on Android or by Apple&apos;s App Store on iPhone and iPad. We never see or store your
+        name, payment card, bank, or billing address details &mdash; Google or Apple handles that as the
+        payment processor. To confirm and remember that a purchase is genuine and still active (for
         example, after you reinstall the App or switch devices), we store a random installation
-        identifier generated by the App, the product purchased, and the purchase token,
-        status, and expiry date that Google Play itself provides. This record is kept for as long as
-        needed to administer your subscription.
+        identifier generated by the App, the product purchased, and the purchase identifier, status,
+        and expiry date that the store itself provides (a Google Play purchase token, or Apple&apos;s
+        original transaction ID). On iPhone and iPad the App attaches that same random installation
+        identifier to the purchase, and Apple sends our server status updates for it (such as renewals,
+        cancellations, and refunds). This record is kept for as long as needed to administer your
+        purchase.
       </p>
       <p>
         <strong>Account contact sync.</strong> When you sign in to a calendar account in the App, YCal
         also sends the sign-in email address(es) for your signed-in account(s), the same random
         installation identifier, and coarse device information (locale, timezone, device model, OS
-        version, and app version &mdash; no GPS or precise location) to that same backend. This applies
-        whether or not you use Premium. We use this so we can reach registered users with important
-        account, subscription, or product communications, and to understand basic app usage across
-        devices. This is separate from your device&apos;s address book &mdash; YCal does not request or
-        read your contacts list. These records are kept for as long as your account remains in active
-        use, or until you ask us to delete them.
+        version, and app version &mdash; no GPS or precise location) to that same backend. We use this so
+        we can reach registered users with important account, subscription, or product communications,
+        and to understand basic app usage across devices. This is separate from your device&apos;s
+        address book &mdash; YCal does not request or read your contacts list. These records are kept for
+        as long as your account remains in active use, or until you ask us to delete them.
       </p>
       <p>
         <strong>Sign-in troubleshooting.</strong> If signing in to an account fails, the App sends a
         short diagnostic report to the same backend: the email address you entered, the kind of failure
-        (for example wrong app password, network error, or a Yahoo server error) and the message the
+        (for example wrong app password, network error, or a calendar server error) and the message the
         App showed you, how many attempts you have made, the random installation identifier, and the
         same coarse device information as above. Your password is never included. We use these reports
-        to find and fix sign-in problems and, where helpful, to contact you with steps to get signed
-        in. They are deleted automatically after 90 days.
+        to find and fix sign-in problems and, where helpful, to contact you with steps to get signed in.
+        They are deleted automatically after 90 days.
       </p>
       <p>
         <strong>Premium usage diagnostics.</strong> To understand which Premium features people are
@@ -81,11 +91,18 @@ export function Privacy() {
         email address or calendar data, and are deleted automatically after 12 months.
       </p>
 
+      <h2>No tracking or advertising</h2>
+      <p>
+        YCal shows no ads, contains no advertising or analytics SDKs, does not use advertising
+        identifiers, and does not track you across other companies&apos; apps or websites. We do not sell
+        or share your personal information.
+      </p>
+
       <h2>App permissions</h2>
       <p>
         YCal requests device permissions needed to show reminder notifications, keep calendars synced in
-        the background, and process Google Play purchases. It does not request access to your device
-        contacts list, location, camera, or photo library, and it does not use advertising identifiers.
+        the background, and process in-app purchases through Google Play or the App Store. It does not
+        request access to your device contacts list, location, camera, or photo library.
       </p>
 
       <h2>This website</h2>
@@ -100,19 +117,19 @@ export function Privacy() {
       <h2>Children&apos;s privacy</h2>
       <p>
         YCal is not directed at children and we do not knowingly collect personal information from
-        children. Signing in requires a Yahoo account and app password, which are subject to Yahoo&apos;s
-        own age requirements.
+        children. Signing in requires a calendar account (such as a Yahoo account) and an app password,
+        which are subject to that provider&apos;s own age requirements.
       </p>
 
       <h2>Your choices</h2>
       <p>
         You can remove a signed-in account or sign out entirely from within the App to clear locally
         cached credentials, calendar data, and pending reminders. Uninstalling the App removes all data
-        stored on your device. To request deletion of a subscription-verification record, contact us
-        with your Google Play order/receipt information so we can locate it &mdash; we have no name or
-        email tied to that record otherwise. To request deletion of an account-contact sync record,
-        email us from (or naming) the sign-in address you used, and we will remove it; the same applies
-        to sign-in troubleshooting reports.
+        stored on your device. To request deletion of a purchase-verification record, contact us with
+        your Google Play order ID or Apple order ID (from your purchase receipt) so we can locate it
+        &mdash; we have no name or email tied to that record otherwise. To request deletion of an
+        account-contact sync record, email us from (or naming) the sign-in address you used, and we will
+        remove it; the same applies to sign-in troubleshooting reports.
       </p>
 
       <h2>Contact</h2>

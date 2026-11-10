@@ -1,14 +1,14 @@
 {
   "/": {
-    "title": "YCal — Yahoo Calendar app for Android with reminders",
-    "description": "Never miss a Yahoo Calendar invite: Android app with reliable reminders, agenda, week and month views. 3-day free trial, no ads. Independent app—not affiliated with Yahoo."
+    "title": "YCal — Calendar app with reliable reminders for Android & iPhone",
+    "description": "Never miss a meeting invite: calendar app for Android and iPhone with reliable reminders, agenda, week and month views. Works with Yahoo accounts over CalDAV. Independent app, not affiliated with Yahoo Inc."
   },
   "/privacy": {
     "title": "Privacy policy — YCal",
-    "description": "How YCal handles privacy: on-device caching, Yahoo CalDAV data, and this marketing site."
+    "description": "How YCal handles privacy: on-device storage, direct CalDAV sync, purchase verification, and this website."
   },
   "/terms": {
     "title": "Terms of use — YCal",
-    "description": "Terms of use for YCal, the independent Yahoo Calendar client for mobile."
+    "description": "Terms of use for YCal, an independent calendar app for Android and iPhone. Trademark and App Store terms included."
   }
 }

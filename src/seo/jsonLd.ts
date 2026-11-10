@@ -1,13 +1,13 @@
-import { GOOGLE_PLAY_URL, SITE_ORIGIN } from '../config'
+import { APP_STORE_URL, GOOGLE_PLAY_URL, SITE_ORIGIN } from '../config'
 import { HOME_FAQ } from '../content/homeFaq'
 
 const APP_JSON_LD = {
   '@type': 'SoftwareApplication',
   name: 'YCal',
   description:
-    'Android calendar for Yahoo accounts: CalDAV sync, reminders, agenda, week and month views. Yearly, monthly or one-time Lifetime plans through Google Play. Independent client—not affiliated with Yahoo.',
+    'Calendar app for Android and iPhone that works with Yahoo accounts over CalDAV: reminders, agenda, week and month views. Yearly, monthly or one-time Lifetime plans. Independent app, not affiliated with Yahoo Inc.',
   applicationCategory: 'UtilitiesApplication',
-  operatingSystem: 'Android',
+  operatingSystem: 'Android, iOS',
   // Subscription prices vary by country; Lifetime is the one fixed USD price.
   offers: {
     '@type': 'Offer',
@@ -16,6 +16,7 @@ const APP_JSON_LD = {
     priceCurrency: 'USD',
   },
   installUrl: GOOGLE_PLAY_URL,
+  sameAs: [GOOGLE_PLAY_URL, APP_STORE_URL],
   ...(SITE_ORIGIN
     ? {
         url: SITE_ORIGIN,
