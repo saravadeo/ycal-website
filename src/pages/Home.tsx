@@ -1,4 +1,5 @@
 import { APP_STORE_URL, CREATOR, PREMIUM_FREE_TRIAL_DAYS, playStoreUrl } from '../config'
+import { StoreButtons } from '../components/StoreButtons'
 import { HOME_FAQ } from '../content/homeFaq'
 
 const TRIAL_LABEL = PREMIUM_FREE_TRIAL_DAYS > 0 ? `${PREMIUM_FREE_TRIAL_DAYS}-day free trial` : null
@@ -164,22 +165,11 @@ export function Home() {
             Your calendar on your phone with reminders that actually go off — month, week and agenda
             views. Works with your existing Yahoo account over CalDAV.
           </p>
-          <p className="home-store-cta">
-            <a
-              className="home-store-cta-btn"
-              href={playStoreUrl('hero')}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {TRIAL_LABEL ? `Start your ${TRIAL_LABEL}` : 'Get it on Google Play'}
-            </a>
-            <a className="home-store-cta-secondary" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
-              iPhone &amp; iPad
-            </a>
+          <StoreButtons placement="hero">
             <a className="home-store-cta-secondary" href="#premium">
               See plans
             </a>
-          </p>
+          </StoreButtons>
           <ul className="home-hero-trust" aria-label="Highlights">
             {TRIAL_LABEL ? <li>{TRIAL_LABEL}</li> : null}
             <li>Or pay once</li>
@@ -304,16 +294,7 @@ export function Home() {
             </tbody>
           </table>
         </div>
-        <p className="home-store-cta">
-          <a
-            className="home-store-cta-btn"
-            href={playStoreUrl('compare')}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {TRIAL_LABEL ? `Install & start your ${TRIAL_LABEL}` : 'Install YCal'}
-          </a>
-        </p>
+        <StoreButtons placement="compare" />
         <p className="compare-footnote">
           Yearly and Monthly renew automatically through Google Play or the App Store; cancel any time
           in your store account. Lifetime is a one-time purchase. Prices are shown in the store for your
@@ -441,19 +422,7 @@ export function Home() {
           Stop missing meetings
         </h2>
         <p className="tagline">Setup takes about two minutes with an app password from your Yahoo account.</p>
-        <p className="home-store-cta">
-          <a
-            className="home-store-cta-btn"
-            href={playStoreUrl('footer_cta')}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {TRIAL_LABEL ? `Start your ${TRIAL_LABEL}` : 'Get it on Google Play'}
-          </a>
-          <a className="home-store-cta-secondary" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
-            Get it on the App Store
-          </a>
-        </p>
+        <StoreButtons placement="footer_cta" />
       </section>
     </div>
   )

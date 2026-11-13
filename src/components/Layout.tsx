@@ -45,7 +45,10 @@ export function Layout() {
             Terms
           </NavLink>
           <a className="nav-cta" href={playStoreUrl('header')} target="_blank" rel="noopener noreferrer">
-            Get the app
+            Google Play
+          </a>
+          <a className="nav-cta" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+            App Store
           </a>
         </nav>
       </header>
